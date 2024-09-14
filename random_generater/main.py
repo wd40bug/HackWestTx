@@ -87,7 +87,7 @@ def generate_bounty():
     crime = random.choice(class_list)
 
     # Choose bounty condition
-    condition = random.choice(["dead", "alive"])
+    condition = random.choice(["dead", "alive", "dead_or_alive"])
 
     # Choose random styles (2-5)
     num_styles = random.randint(2, 5)
