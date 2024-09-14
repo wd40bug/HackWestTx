@@ -48,11 +48,13 @@ public class Controller {
     return "Hello Frontend";
   }
 
+
   // @RequestMapping(value = "/testPost", method = RequestMethod.POST)
   // public Bounty testPost(@RequestBody Bounty testBounty){
   // System.out.println("HERE");
   // repository.save(testBounty);
   // return null;
+
 
   @GetMapping("/dummy_data")
   public List<Bounty> dummy_data(@RequestParam(name = "hunter") Hunter hunter) {
@@ -62,6 +64,7 @@ public class Controller {
   @GetMapping("/feed")
   public List<Bounty> feed(@RequestParam(name = "hunter") Hunter hunter, @RequestParam(name = "max") int max) {
     List<Bounty> bounties = repository.get_lt_danger(hunter.skill() * 10);
+
 
     var sorted = bounties.stream()
         .sorted(java.util.Comparator.comparing(val -> Compatability.compatability(hunter, val)))
