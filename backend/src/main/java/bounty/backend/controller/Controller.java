@@ -45,15 +45,15 @@ public class Controller {
   }
 
 
- // @RequestMapping(value = "/testPost", method = RequestMethod.POST)
- // public Bounty testPost(@RequestBody Bounty testBounty){
- //   System.out.println("HERE");
- //   repository.save(testBounty);
-  //  return null;
+ // // @RequestMapping(value = "/testPost", method = RequestMethod.POST)
+ // // public Bounty testPost(@RequestBody Bounty testBounty){
+ // //   System.out.println("HERE");
+ // //   repository.save(testBounty);
+  // //  return null;
 
   @GetMapping("/dummy_data")
   public List<Bounty> dummy_data(@RequestBody() Hunter hunter){
     return repository.get_lt_danger(hunter.skill() * 10); 
 
-  }
+  // }
 }
