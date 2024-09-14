@@ -12,6 +12,8 @@ public interface BountyRepository extends MongoRepository<Bounty, String> {
   @Query("{_id:'?0'}")
   Bounty get_by_id(String id);
 
+  @Query("{name: '?0'}")
+  Bounty get_by_name(String name);
 
   public long count();
 

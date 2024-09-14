@@ -24,7 +24,7 @@ public class BackendApplication implements CommandLineRunner {
 
   public void run(String... args) {
     System.out.println("HERE");
-    Bounty item = bountyRepo.get_by_id("66e5c80fd2824c21ce4fca72");
+    Bounty item = bountyRepo.findById("66e5d7cdd2824c21ce4fca90").orElse(null);
     System.out.println(item);
   }
 
