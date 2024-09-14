@@ -54,6 +54,7 @@ styles_list = [
     "Dusty Getaway Dramas", "Cattle Rustler Rumble", "Outlaw Hide-and-Seek"
 ]
 
+
 def generate_bounty():
     # Generate random name
     name = random.choice(first_names) + ' ' + random.choice(last_names)
@@ -64,7 +65,12 @@ def generate_bounty():
     # Generate random latitude and longitude
     latitude = random.uniform(-90, 90)
     longitude = random.uniform(-180, 180)
-    last_known = f"{latitude},{longitude}"
+    
+    # Update last_known to be a dictionary with latitude and longitude
+    last_known = {
+        "lat": latitude,
+        "lon": longitude
+    }
 
     # Generate danger value (0-100)
     danger = round(random.uniform(0, 100), 0)
