@@ -2,7 +2,10 @@ package bounty.backend.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
+import org.apache.logging.log4j.util.PropertySource.Comparator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import bounty.backend.algorithm.Compatability;
 import bounty.backend.model.Bounty;
 import bounty.backend.model.Hunter;
 import bounty.backend.repository.BountyRepository;
@@ -40,20 +44,33 @@ public class Controller {
   }
 
   @GetMapping("/test")
-  public String test(){
+  public String test() {
     return "Hello Frontend";
   }
 
 
- // // @RequestMapping(value = "/testPost", method = RequestMethod.POST)
- // // public Bounty testPost(@RequestBody Bounty testBounty){
- // //   System.out.println("HERE");
- // //   repository.save(testBounty);
-  // //  return null;
+  // @RequestMapping(value = "/testPost", method = RequestMethod.POST)
+  // public Bounty testPost(@RequestBody Bounty testBounty){
+  // System.out.println("HERE");
+  // repository.save(testBounty);
+  // return null;
+
 
   @GetMapping("/dummy_data")
-  public List<Bounty> dummy_data(@RequestBody() Hunter hunter){
-    return repository.get_lt_danger(hunter.skill() * 10); 
+  public List<Bounty> dummy_data(@RequestParam(name = "hunter") Hunter hunter) {
+    return repository.get_lt_danger(hunter.skill() * 10);
+  }
 
-  // }
+  @GetMapping("/feed")
+  public List<Bounty> feed(@RequestParam(name = "hunter") Hunter hunter, @RequestParam(name = "max") int max) {
+    List<Bounty> bounties = repository.get_lt_danger(hunter.skill() * 10);
+
+
+    var sorted = bounties.stream()
+        .sorted(java.util.Comparator.comparing(val -> Compatability.compatability(hunter, val)))
+        .collect(Collectors.toList());
+
+    return sorted;
+  }
+
 }
