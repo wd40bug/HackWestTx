@@ -4,6 +4,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,5 +38,12 @@ public class Controller {
   @GetMapping("/test")
   public String test(){
     return "Hello Frontend";
+  }
+
+  @RequestMapping(value = "/testPost", method = RequestMethod.POST)
+  public Bounty testPost(@RequestBody Bounty testBounty){
+    System.out.println("HERE");
+    repository.save(testBounty);
+    return null;
   }
 }
