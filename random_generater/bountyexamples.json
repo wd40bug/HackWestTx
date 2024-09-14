@@ -1,0 +1,147 @@
+[
+    {
+        "name": "Roy Montgomery",
+        "pic": "https://picsum.photos/400/400.jpg",
+        "last_known": "-16.47333414145949,64.9577442502719",
+        "danger": 14.0,
+        "reward": 130.0,
+        "client": "Saloon Sally",
+        "crime": "Hitching the town's horses to the wrong wagons",
+        "bounty_condition": "alive",
+        "styles": [
+            "High Noon Hijinks",
+            "Bootlegger Boogie",
+            "Campfire Caper Chronicles",
+            "Horse Heist Hijinks",
+            "Bank Heist Bonanza"
+        ]
+    },
+    {
+        "name": "Dolly Wyatt",
+        "pic": "https://picsum.photos/400/400.jpg",
+        "last_known": "-31.544843626404912,-102.281393077741",
+        "danger": 53.0,
+        "reward": 518.0,
+        "client": "Bandit Bill McGraw",
+        "crime": "Rustling the sheriff's prized chickens",
+        "bounty_condition": "dead",
+        "styles": [
+            "Outlaw Hide-and-Seek",
+            "Campfire Caper Chronicles",
+            "High Noon Hijinks",
+            "Barrel Banditry"
+        ]
+    },
+
+    {
+        "name": "Slim Wyatt",
+        "pic": "https://picsum.photos/400/400.jpg",
+        "last_known": "-49.00677569923387,37.22881856042284",
+        "danger": 87.0,
+        "reward": 878.0,
+        "client": "Bandit Bill McGraw",
+        "crime": "Filing false claims for gold nuggets at the assay office",
+        "bounty_condition": "dead",
+        "styles": [
+            "Bank Heist Bonanza",
+            "Wanted Poster Pranks"
+        ]
+    },
+    {
+        "name": "Lottie Hawkins",
+        "pic": "https://picsum.photos/400/400.jpg",
+        "last_known": "-8.913224318689018,63.55544228176194",
+        "danger": 24.0,
+        "reward": 258.0,
+        "client": "Prospector Gold Rush",
+        "crime": "Faking a ghost sighting to scare off the cattle",
+        "bounty_condition": "dead",
+        "styles": [
+            "Dusty Getaway Dramas",
+            "Wanted Poster Pranks"
+        ]
+    },
+    {
+        "name": "Maggie Crawford",
+        "pic": "https://picsum.photos/400/400.jpg",
+        "last_known": "-15.914582143925145,111.60856581653695",
+        "danger": 90.0,
+        "reward": 885.0,
+        "client": "Saloon Sally",
+        "crime": "Hitching the town's horses to the wrong wagons",
+        "bounty_condition": "alive",
+        "styles": [
+            "Six-Shooter Snafus",
+            "Gold Rush Gambits",
+            "Outlaw Hide-and-Seek"
+        ]
+    },
+
+    {
+        "name": "Lottie West",
+        "pic": "https://picsum.photos/400/400.jpg",
+        "last_known": "43.579023226497185,-104.58962333195419",
+        "danger": 16.0,
+        "reward": 161.0,
+        "client": "Prospector Gold Rush",
+        "crime": "Swiping the town's favorite rocking chair",
+        "bounty_condition": "dead",
+        "styles": [
+            "Campfire Caper Chronicles",
+            "Six-Shooter Snafus",
+            "Saloon Shakedown Shenanigans",
+            "Bank Heist Bonanza",
+            "Bootlegger Boogie"
+        ]
+    },
+
+    {
+        "name": "Dolly Fletcher",
+        "pic": "https://picsum.photos/400/400.jpg",
+        "last_known": "-25.120431103244485,153.1099607311112",
+        "danger": 83.0,
+        "reward": 845.0,
+        "client": "Bandit Bill McGraw",
+        "crime": "Switching the town's water troughs with pickle barrels",
+        "bounty_condition": "alive",
+        "styles": [
+            "Saloon Shakedown Shenanigans",
+            "Outlaw Hide-and-Seek"
+        ]
+    },
+
+    {
+        "name": "Rusty Hawkins",
+        "pic": "https://picsum.photos/400/400.jpg",
+        "last_known": "43.708756136644894,-100.10381045669604",
+        "danger": 26.0,
+        "reward": 280.0,
+        "client": "Miss Dolly Dynamite",
+        "crime": "Faking a ghost sighting to scare off the cattle",
+        "bounty_condition": "dead",
+        "styles": [
+            "Outlaw Hide-and-Seek",
+            "Saloon Shakedown Shenanigans",
+            "Barrel Banditry"
+        ]
+    },
+
+    {
+        "name": "Calamity Ellis",
+        "pic": "https://picsum.photos/400/400.jpg",
+        "last_known": "-83.09625067865743,158.33935547816333",
+        "danger": 62.0,
+        "reward": 661.0,
+        "client": "Rancher Rusty Nails",
+        "crime": "Faking a ghost sighting to scare off the cattle",
+        "bounty_condition": "alive",
+        "styles": [
+            "Whiskey Swindle",
+            "Cattle Rustler Rumble",
+            "Barrel Banditry",
+            "Gold Rush Gambits",
+            "Lasso Loophole Tricks"
+        ]
+    }
+
+]
