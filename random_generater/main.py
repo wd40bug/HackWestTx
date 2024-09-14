@@ -4,6 +4,7 @@ import json
 # Data lists
 clients_list = [
     "Sheriff Buckaroo",
+    "Alameda Slim",
     "Miss Dolly Dynamite",
     "Outlaw Slim Jim",
     "Mayor Tumbleweed",
