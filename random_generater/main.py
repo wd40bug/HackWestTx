@@ -55,6 +55,8 @@ styles_list = [
     "Dusty Getaway Dramas", "Cattle Rustler Rumble", "Outlaw Hide-and-Seek"
 ]
 
+class_list = ["Bandit", "Rustler", "Murderer", "Hustler", "Vandal"]
+
 
 def generate_bounty():
     # Generate random name
@@ -82,7 +84,7 @@ def generate_bounty():
 
     # Choose random client and crime
     client = random.choice(clients_list)
-    crime = random.choice(crimes_list)
+    crime = random.choice(class_list)
 
     # Choose bounty condition
     condition = random.choice(["dead", "alive"])
@@ -90,6 +92,11 @@ def generate_bounty():
     # Choose random styles (2-5)
     num_styles = random.randint(2, 5)
     styles = random.sample(styles_list, num_styles)
+
+    # Add new fields: speed, draw-speed, slipperiness, class
+    speed = round(random.uniform(0.1, 10.0), 2)  # Speed > 0
+    draw_speed = round(random.uniform(1.0, 50.0), 2)  # Draw-speed > 0
+    slipperiness = random.randint(0, 100)  # Slipperiness 0-100
 
     # Create the bounty dictionary
     bounty = {
@@ -101,7 +108,10 @@ def generate_bounty():
         "client": client,
         "crime": crime,
         "bounty_condition": condition,
-        "styles": styles
+        "styles": styles,
+        "speed": speed,
+        "draw_speed": draw_speed,
+        "slipperiness": slipperiness
     }
 
     return bounty
