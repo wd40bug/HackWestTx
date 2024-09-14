@@ -4,7 +4,7 @@
     
     <div class="profile">
         <div class="pheader">
-            <img src="https://commons.wikimedia.org/wiki/File:Stickman.png"/>
+            <img src="Stickman.png" alt="a stickman"/>
             <h2 style="color:rgba(155, 74, 40, 0.877)">Hunter Guy</h2>
         </div>
         <body>
@@ -12,7 +12,7 @@
             <ul id="identifiers", style="color:rgba(155, 74, 40, 0.877)">
                 <li><strong>Class:</strong> Cowboy</li>
                 <li><strong>Skill Level:</strong> 5</li>
-                <li><strong>Location:""</strong>[5,5]</li>
+                <li><strong>Location: </strong>[5,5]</li>
               </ul> 
             
             <dl>
@@ -29,53 +29,56 @@
     <div class="feed">
         <body>
             <div class = "box">
-                <body> 
-                    <p>this is a box</p>
+                <body>
+                    <img src="https://commons.wikimedia.org/wiki/File:Stickman.png"/>
+                    <h4>$$ MONEY $$</h4>
+                    <ul id="identifiers", style="color:rgba(155, 74, 40, 0.877)">
+                        <li><strong>Type:</strong> Dead</li>
+                        <li><strong>Danger Level:</strong> 5</li>
+                        <li><strong>Location:</strong>[5,5]</li>
+                      </ul> 
                 </body>
            
             </div>
             <div class = "box">
-                <body> 
-                    <p>this is a box</p>
+                <body>
+                    <img src="https://commons.wikimedia.org/wiki/File:Stickman.png"/>
+                    <h4>$$ MONEY $$</h4>
+                    <ul id="identifiers", style="color:rgba(155, 74, 40, 0.877)">
+                        <li><strong>Type:</strong> Dead</li>
+                        <li><strong>Danger Level:</strong> 5</li>
+                        <li><strong>Location:</strong>[5,5]</li>
+                      </ul> 
                 </body>
            
             </div>
             <div class = "box">
-                <body> 
-                    <p>this is a box</p>
+                <body>
+                    <img src="https://commons.wikimedia.org/wiki/File:Stickman.png"/>
+                    <h4>$$ MONEY $$</h4>
+                    <ul id="identifiers", style="color:rgba(155, 74, 40, 0.877)">
+                        <li><strong>Type:</strong> Dead</li>
+                        <li><strong>Danger Level:</strong> 5</li>
+                        <li><strong>Location:</strong>[5,5]</li>
+                      </ul> 
                 </body>
            
             </div>
             <div class = "box">
-                <body> 
-                    <p>this is a box</p>
-                    
-                </body>
-                
-           
-            </div>
-            <div class = "box">
-                <body> 
-                    <p>this is a box</p>
+                <body>
+                    <img src="https://commons.wikimedia.org/wiki/File:Stickman.png"/>
+                    <h4>$$ MONEY $$</h4>
+                    <ul id="identifiers", style="color:rgba(155, 74, 40, 0.877)">
+                        <li><strong>Type:</strong> Dead</li>
+                        <li><strong>Danger Level:</strong> 5</li>
+                        <li><strong>Location:</strong>[5,5]</li>
+                      </ul> 
                 </body>
            
             </div>
-            <div class = "box">
-                <body> 
-                    <p>this is a box</p>
-                </body>
+            
            
-            </div>
-            <div class = "box">
-                <body> 
-                    <p>this is a box</p>
-                </body>
-            </div>
-            <div class = "box">
-                <body> 
-                    <p>this is a box</p>
-                </body>
-            </div>
+           
         </body>
         
         
@@ -100,7 +103,7 @@
         width: 20%;
         padding: 6px;
         display: inline-block;
-        
+     
         
     }
     .pheader{
@@ -125,11 +128,11 @@
         
     }
     .box{
-        margin: left;
+        
         text-align: center;
         display: inline-block;
         margin-bottom: 5px;
-        width: 33%;
+        width: 47%;
         padding: 4.5px;
         background-color: rgba(190, 186, 177, 0.877);
         /* rgba(190, 186, 177, 0.877) */
