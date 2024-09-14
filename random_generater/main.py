@@ -47,6 +47,13 @@ last_names = [
     "Bennett", "Crawford", "Stark", "Montgomery", "Ellis"
 ]
 
+styles_list = [
+    "Bank Heist Bonanza", "Saloon Shakedown Shenanigans", "High Noon Hijinks", "Gold Rush Gambits",
+    "Horse Heist Hijinks", "Lasso Loophole Tricks", "Campfire Caper Chronicles", "Six-Shooter Snafus",
+    "Wanted Poster Pranks", "Barrel Banditry", "Whiskey Swindle", "Bootlegger Boogie",
+    "Dusty Getaway Dramas", "Cattle Rustler Rumble", "Outlaw Hide-and-Seek"
+]
+
 def generate_bounty():
     # Generate random name
     name = random.choice(first_names) + ' ' + random.choice(last_names)
@@ -70,6 +77,13 @@ def generate_bounty():
     client = random.choice(clients_list)
     crime = random.choice(crimes_list)
 
+    # Choose bounty condition
+    condition = random.choice(["dead", "alive"])
+
+    # Choose random styles (2-5)
+    num_styles = random.randint(2, 5)
+    styles = random.sample(styles_list, num_styles)
+
     # Create the bounty dictionary
     bounty = {
         "name": name,
@@ -78,7 +92,9 @@ def generate_bounty():
         "danger": danger,
         "reward": reward,
         "client": client,
-        "crime": crime
+        "crime": crime,
+        "bounty_condition": condition,
+        "styles": styles
     }
 
     return bounty
