@@ -76,7 +76,7 @@
     opacity: 1;
     position: absolute;
     z-index: 100;
-    background-color: rgba(256, 256, 256, 1);
+    background-color: #D2B582;
     left: 45%;
     top: 44%;
     margin-left: -40%;
@@ -88,6 +88,7 @@
   .form > * {
     display: block;
     padding: 2px;
+    border: 0px;
   }
   .form > label {
     margin-top: 10px;
