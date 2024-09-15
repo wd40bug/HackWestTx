@@ -8,19 +8,7 @@
   import bounty4 from "$lib/assets/bounty4.png";
   import bounty5 from "$lib/assets/bounty5.png";
   import bounty6 from "$lib/assets/bounty6.png";
-  //bounty.pic
-  //  let arr: string[] = [bounty1, bounty2, bounty3, bounty4, bounty5, bounty6]
-  //var pic:string;
-  //  var i:number;
-  //  for(i = 0;i>=1;i++){
-  //     if(bounty.pic === arr[i]){
-  //       pic = arr[i];
-  //     }
-  //    }
 
-  // let arr: string[] = [bounty1,bounty2,bounty3,bounty4,bounty5,bounty6];
-  // const ind: number = Math.floor(Math.random()* arr.length);
-  // const result: string = arr[ind];
   console.log(bounty.pic);
   let pic = bounty.pic;
   function getBountyImage(pic: string) {
@@ -56,12 +44,17 @@
   <p>
     <strong>{bounty.name}</strong> is a dangerous criminal wanted for being a {bounty.crime}.
     {bounty.client} is offering {bounty.reward} HARD CASH for
-    <strong>{bounty.name}</strong>, {bounty.bounty_condition}! They prefer to
-    see
-    <strong>{bounty.name}</strong> taken out using any of these methods: {bounty.styles}.
-    <br />
-    Be warned! <strong>{bounty.name}</strong> is known to have these skills!
+    <strong>{bounty.name}</strong>, {bounty.bounty_condition}!
+    <strong>{bounty.name}</strong>
+    is known to have the following styles:
   </p>
+  <ul>
+    {#each bounty.styles as style}
+      <li>{style}</li>
+    {/each}
+  </ul>
+  <br />
+  <p><strong>stats</strong></p>
   <dl>
     <dt>Speed</dt>
     <dd>- {bounty.speed}</dd>
