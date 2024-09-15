@@ -8,14 +8,43 @@
   import bounty4 from "$lib/assets/bounty4.png";
   import bounty5 from "$lib/assets/bounty5.png";
   import bounty6 from "$lib/assets/bounty6.png";
+  //bounty.pic
+  //  let arr: string[] = [bounty1, bounty2, bounty3, bounty4, bounty5, bounty6]
+  //var pic:string;
+  //  var i:number; 
+  //  for(i = 0;i>=1;i++){
+  //     if(bounty.pic === arr[i]){
+  //       pic = arr[i];
+  //     }
+  //    }
 
-  let arr: string[] = [bounty1,bounty2,bounty3,bounty4,bounty5,bounty6];
-  const ind: number = Math.floor(Math.random()* arr.length);
-  const result: string = arr[ind];
+  // let arr: string[] = [bounty1,bounty2,bounty3,bounty4,bounty5,bounty6];
+  // const ind: number = Math.floor(Math.random()* arr.length);
+  // const result: string = arr[ind];
+  console.log(bounty.pic);
+  let pic = bounty.pic;
+  function getBountyImage(pic: string) {
+     switch (pic) {
+       case 'bounty1':
+         return bounty1;
+       case 'bounty2':
+         return bounty2;
+       case 'bounty3':
+         return bounty3;
+       case 'bounty4':
+         return bounty4;
+       case 'bounty5':
+         return bounty5;
+       case 'bounty6':
+         return bounty6;
+       default:
+         return 'https://picsum.photos/512/512.jpg'; // Default image if none match
+     }
+    }
 </script>
 
 <article>
-  <img class="picture" src={result} alt="criminal"/>
+  <img class="picture" src={getBountyImage(bounty.pic)} alt="criminal"/>
   <h4><strong>$$ {bounty.reward} $$</strong></h4>
   <ul id="identifiers" style="color:rgba(155, 74, 40, 0.877)"> 
       <li><strong>Condition</strong>{bounty.bounty_condition}</li>
@@ -25,6 +54,7 @@
   </ul>
   
   <p>
+    console.log({bounty.pic});
     {bounty.name} is a dangerous criminal wanted for being a {bounty.crime}. 
     {bounty.client} is offering {bounty.reward} HARD CASH for {bounty.name}, {bounty.bounty_condition}! They prefer to see
     {bounty.name} taken out using any of these methods: {bounty.styles}.

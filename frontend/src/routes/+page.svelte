@@ -7,6 +7,8 @@
   const boxes = 10;
   const hunter = getDefaultHunter(); //TODO: hunter stuff
   let bounties: Bounty[] = [];
+  let sortOption: string = 'relevance'; // Default sorting option
+
   async function refresh_bounties() {
     let response = await fetch(
       "/api?" +
@@ -16,7 +18,31 @@
         }).toString(),
     ).then((res) => res.text());
     bounties = JSON.parse(response);
+
+     // Apply sorting after fetching the bounties
+     sortBounties();
+
   }
+  // Function to sort bounties based on the selected option
+  function sortBounties() {
+    if (sortOption === 'reward') {
+      // Sort by reward in descending order
+      bounties = [...bounties].sort((a, b) => b.reward - a.reward);
+    } else if (sortOption === 'name') {
+      // Sort by name alphabetically
+      bounties = [...bounties].sort((a, b) => a.name.localeCompare(b.name));
+    } else {
+      // Default sort by relevance (assumed to be the original order from API)
+      // If relevance needs specific sorting logic, add it here
+    }
+  }
+  // Update sorting when the option changes
+  function changeSort(option: string) {
+    sortOption = option;
+    sortBounties(); // Re-sort based on the new option
+  }
+
+
   onMount(refresh_bounties);
 </script>
 
@@ -25,6 +51,15 @@
     <Profile {hunter} />
   </div>
   <div class="feed">
+    <!-- Sorting Dropdown -->
+    <label for="sort">Sort By: </label>
+    <select id="sort" bind:value={sortOption} on:change="{(e) => changeSort(e.target.value)}">
+      <option value="relevance">Relevance</option>
+      <option value="reward">Reward</option>
+      <option value="name">Name</option>
+    </select>
+
+    <!-- display bounties -->
     {#each bounties as bounty}
       <BountyShort {bounty} />
     {/each}
