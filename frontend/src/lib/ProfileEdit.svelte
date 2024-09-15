@@ -42,6 +42,22 @@
         bind:value={hunter.location.lon}
       />
     </fieldset>
+    <label for="speed">How Fast's Your Horse?</label>
+    <input type="number" name="speed" id="speed" bind:value={hunter.speed} />
+    <label for="draw_speed">How fast of a shooter are you?</label>
+    <input
+      type="number"
+      name="draw_speed"
+      id="draw_speed"
+      bind:value={hunter.draw_speed}
+    />
+    <label for="discernment">How good's your eye?</label>
+    <input
+      type="number"
+      name="discernment"
+      id="discernment"
+      bind:value={hunter.discernment}
+    />
     <label for="class" />
     <select name="class" id="class" bind:value={hunter.type}>
       <option value="Gunslinger">Gunslinger</option>
@@ -50,13 +66,7 @@
       <option value="Trickster">Trickster</option>
       <option value="Sherrif">Sheriff</option>
     </select>
-    <input
-      type="submit"
-      name="submit"
-      id="submit"
-      value="use"
-      on:click={use}
-    />
+    <input type="submit" name="submit" id="submit" value="use" on:click={use} />
   </div>
 </div>
 
