@@ -5,9 +5,9 @@
 
 <style>
   .profile-card {
-    width: 800px; /* Adjust width as needed */
+    width: 100%; /* Adjust width as needed */
     border: 2px solid #000;
-    padding: 20px;
+    padding: 0;
     font-family: Arial, sans-serif;
   }
   
@@ -32,7 +32,7 @@
   .back-button {
     display: block;
     width: 100%;
-    padding: 10px;
+    padding: 10px 0px 10px 0px;
     background: #007BFF;
     color: white;
     text-align: center;
