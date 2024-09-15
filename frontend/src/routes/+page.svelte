@@ -1,13 +1,20 @@
 <script lang="ts">
   import type { Bounty } from "$lib/types";
+  import { getDefaultHunter } from "$lib/types";
   import BountyShort from "$lib/BountyShort.svelte";
   import Profile from "$lib/Profile.svelte";
   import { onMount } from "svelte";
   const boxes = 10;
-  const hunter = "";//TODO: hunter stuff
+  const hunter = getDefaultHunter(); //TODO: hunter stuff
   let bounties: Bounty[] = [];
   async function refresh_bounties() {
-    let response = await fetch("/api");
+    let response = await fetch(
+      "/api?" +
+        new URLSearchParams({
+          hunter: JSON.stringify(hunter),
+          max: '10',
+        }).toString(),
+    ).then((res) => res.text());
     console.log(response);
   }
   onMount(refresh_bounties);
@@ -15,7 +22,7 @@
 
 <div class="page">
   <div class="profile">
-    <Profile {hunter}/>
+    <Profile {hunter} />
     <!-- <div class="pheader"> -->
     <!--   <img src="https://commons.wikimedia.org/wiki/File:Stickman.png" /> -->
     <!--   <h2 style="color:rgba(155, 74, 40, 0.877)">Hunter Guy</h2> -->
