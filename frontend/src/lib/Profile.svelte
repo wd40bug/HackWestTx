@@ -2,7 +2,6 @@
   import type { Hunter } from "$lib/types";
   import { Loc2Str } from "$lib/types";
   export let hunter: Hunter;
-  import img from "$lib/assets/Stickman.png";
   //imgs
   import person1 from "$lib/assets/result(3).png";
   import person2 from "$lib/assets/result(2).png";

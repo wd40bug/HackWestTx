@@ -71,8 +71,10 @@
       <select
         id="sort"
         bind:value={sortOption}
-        
-        on:change={(e) => changeSort(e.target.value)}
+        on:change={(e) => {
+          // @ts-ignore
+          changeSort(e.target.value);
+        }}
       >
         <option value="relevance">Relevance</option>
         <option value="reward">Reward</option>
