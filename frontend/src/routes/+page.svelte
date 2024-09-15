@@ -6,10 +6,8 @@
   const boxes = 10;
   const hunter = "";//TODO: hunter stuff
   let bounties: Bounty[] = [];
-  function refresh_bounties() {
-    let response = fetch("localhost:8080/test")
-      .then((res) => res.json)
-      .then((json) => json);
+  async function refresh_bounties() {
+    let response = await fetch("/api");
     console.log(response);
   }
   onMount(refresh_bounties);

@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.util.PropertySource.Comparator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -43,6 +44,7 @@ public class Controller {
     return Optional.ofNullable(item);
   }
 
+  @CrossOrigin(origins = "http://localhost:8081")
   @GetMapping("/test")
   public String test() {
     return "Hello Frontend";
