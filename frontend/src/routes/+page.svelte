@@ -78,6 +78,7 @@
         <option value="reward">Reward</option>
         <option value="name">Name</option>
       </select>
+      <button on:click={refresh_bounties}>Refresh</button>
       {#each bounties as bounty}
         <BountyShort {bounty} />
       {/each}
