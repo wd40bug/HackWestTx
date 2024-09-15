@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Hunter } from "$lib/types";
+  import { Loc2Str } from "$lib/types";
   export let hunter: Hunter;
   import img from "$lib/assets/Stickman.png";
   //imgs
@@ -22,7 +23,7 @@
 <div class="profile-card">
   <div class="header">{hunter.name}'s Profile</div>
   
-  <div class="wrapper">
+  <div class="outer_wrapper"><div class="wrapper">
     <div class="picture">
       <img src={result} alt="" />
     </div>
@@ -30,9 +31,9 @@
       <img src={result2} alt="" />
     </div>
   </div>
-
+  </div>
   <div class="info"><strong>Skill:</strong> {hunter.skill}</div>
-  <div class="info"><strong>Location:</strong> {hunter.location}</div>
+  <div class="info"><strong>Location:</strong> {Loc2Str(hunter.location)}</div>
   <div class="info"><strong>Type:</strong> {hunter.type}</div>
   <div class="info"><strong>Speed:</strong> {hunter.speed}</div>
   <div class="info"><strong>Draw Speed:</strong> {hunter.draw_speed}</div>
@@ -54,12 +55,6 @@
     text-align: center;
   }
 
-  /* .picture2 {
-    width: 100%;
-    height: 100%; /* Adjust based on requirement */
-/*     
-    margin-bottom: 20px;
-  } */ 
   .picture {
     position: absolute;
     top: 0;
@@ -70,12 +65,14 @@
   }
 
   .wrapper{
-    position:relative
+    position:relative;
+    height: 100%;
   }
 
   .info {
     font-size: 16px;
     margin-bottom: 10px;
+    margin-left: 6px;
   }
 
   .back-button {
@@ -88,6 +85,11 @@
     text-decoration: none;
     border-radius: 5px;
     margin-top: 20px;
+  }
+
+  .outer_wrapper{
+    width: 100%;
+    aspect-ratio: 6 / 2;
   }
 
   img {

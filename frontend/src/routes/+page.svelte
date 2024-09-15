@@ -18,11 +18,12 @@
         }).toString(),
     ).then((res) => res.text());
     bounties = JSON.parse(response);
-
+    console.log(bounties)
+  }
      // Apply sorting after fetching the bounties
      sortBounties();
 
-  }
+  
   // Function to sort bounties based on the selected option
   function sortBounties() {
     if (sortOption === 'reward') {
@@ -63,66 +64,53 @@
     {#each bounties as bounty}
       <BountyShort {bounty} />
     {/each}
+<div class="outer_page">
+  <div class="page">
+    <div class="profile">
+      <Profile {hunter} />
+    </div>
+    <div class="feed">
+      {#each bounties as bounty}
+        <BountyShort {bounty} />
+      {/each}
+    </div>
   </div>
 </div>
 
 <style>
-  dd {
-    margin-left: 10px;
-  }
   .page {
-    background-color: rgba(215, 184, 98, 0.877);
     display: grid;
     grid-template-columns: 30% 70%;
     gap: 10px;
   }
-  h2 {
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+
+  .profile,
+  .feed {
+    background-color: rgba(256, 256, 256, 0.6);
+    border-radius: 8px;
+    padding: 17px;
+    box-sizing: border-box;
   }
   .profile {
-    background-color: rgba(190, 186, 177, 0.877);
-    padding: 0px 6px;
     display: inline-block;
     height: auto;
   }
-  .pheader {
-    text-align: center;
-    margin-bottom: 5px;
 
-    padding: 6px;
-    background-color: rgba(190, 186, 177, 0.877);
-    /* rgba(190, 186, 177, 0.877) */
-  }
-  #identifiers {
-    text-align: left;
-  }
   .feed {
-    background-color: rgba(190, 186, 177, 0.877);
     display: inline-block;
-    padding: 6px;
   }
-  .box {
-    margin: left;
-    text-align: center;
-    display: inline-block;
-    margin-bottom: 5px;
-    width: 33%;
-    padding: 4.5px;
-    background-color: rgba(190, 186, 177, 0.877);
-    /* rgba(190, 186, 177, 0.877) */
-  }
+
   .page {
     min-height: 100%;
     padding: 0;
   }
-  .page,
-  :global(body) {
-    padding: 0;
-    margin: 0;
+  .outer_page {
+    background-image: linear-gradient(to bottom right, #eb7e55, #53190e);
+    height: 100vh;
+    padding: 10px;
   }
-  :global(body),
-  :global(html) {
-    height: 100%;
+  :global(body) {
+    margin: 0;
   }
   .feed {
     overflow: scroll;

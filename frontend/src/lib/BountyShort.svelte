@@ -1,5 +1,5 @@
 <script lang="ts">
-
+  import { Loc2Str } from "$lib/types";
   import type { Bounty } from "$lib/types";
   export let bounty: Bounty;
   import bounty1 from "$lib/assets/bounty1.png";
@@ -46,39 +46,39 @@
 <article>
   <img class="picture" src={getBountyImage(bounty.pic)} alt="criminal"/>
   <h4><strong>$$ {bounty.reward} $$</strong></h4>
-  <ul id="identifiers" style="color:rgba(155, 74, 40, 0.877)"> 
-      <li><strong>Condition</strong>{bounty.bounty_condition}</li>
-      <li><strong>Danger Level:</strong>{bounty.danger}</li> 
-      <li><strong>Location:</strong>{bounty.location}</li>
-      <li><strong>Styles:</strong>{bounty.styles}</li>
+  <ul id="identifiers" style="color:rgba(155, 74, 40, 0.877)">
+    <li><strong>Condition</strong>{bounty.bounty_condition}</li>
+    <li><strong>Danger Level:</strong>{bounty.danger}</li>
+    <li><strong>Location:</strong>{Loc2Str(bounty.last_known)}</li>
+    <li><strong>Styles:</strong>{bounty.styles}</li>
   </ul>
-  
+
   <p>
-    console.log({bounty.pic});
-    {bounty.name} is a dangerous criminal wanted for being a {bounty.crime}. 
-    {bounty.client} is offering {bounty.reward} HARD CASH for {bounty.name}, {bounty.bounty_condition}! They prefer to see
+    {bounty.name} is a dangerous criminal wanted for being a {bounty.crime}.
+    {bounty.client} is offering {bounty.reward} HARD CASH for {bounty.name}, {bounty.bounty_condition}!
+    They prefer to see
     {bounty.name} taken out using any of these methods: {bounty.styles}.
-    <br/>
+    <br />
     Be warned! {bounty.name} is known to have these skills!
-    <dl>
-      <dt>Speed</dt> 
-      <dd>- {bounty.speed}</dd> 
-      <dt>Draw-Speed</dt> 
-      <dd>- {bounty.draw_speed}</dd> 
-      <dt>Slipperiness</dt>
-      <dd>- {bounty.slipperiness}</dd> 
-    </dl> 
-  
+  </p>
+  <dl>
+    <dt>Speed</dt>
+    <dd>- {bounty.speed}</dd>
+    <dt>Draw-Speed</dt>
+    <dd>- {bounty.draw_speed}</dd>
+    <dt>Slipperiness</dt>
+    <dd>- {bounty.slipperiness}</dd>
+  </dl>
 </article>
 
 <style>
-  .picture{
+  .picture {
     width: 25%;
     height: 25%;
   }
-article{
-  border: 2px solid black;
-  padding: 6px;
-  padding-right: 10px;
-}
+  article {
+    border: 2px solid black;
+    padding: 6px;
+    padding-right: 10px;
+  }
 </style>
