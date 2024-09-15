@@ -6,7 +6,7 @@ export async function GET({ url, request }: RequestEvent) {
   hunter.location = JSON.parse("{\"lat\": -39.492804643893024,\"lon\": 50.43708590314395}");
 
   // @ts-ignore
-  let data = await fetch("http://localhost:8080/dummy_data", {
+  let data = await fetch("https://conservation-melita-hackwesttx-group-010134f4.koyeb.app/dummy_data", {
     method: "POST", headers: {
       "Content-Type": "application/json",
     }, body: JSON.stringify(hunter)
