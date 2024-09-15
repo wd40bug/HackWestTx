@@ -15,7 +15,7 @@
           max: '10',
         }).toString(),
     ).then((res) => res.text());
-    console.log(response);
+    bounties = JSON.parse(response);
   }
   onMount(refresh_bounties);
 </script>
@@ -97,14 +97,14 @@
     /* rgba(190, 186, 177, 0.877) */
   }
   .page {
-    min-height: 100%;
+    height: 100%; 
+    padding: 0;
   }
-  .page,
-  body {
+  .page, :global(body) {
     padding: 0;
     margin: 0;
   }
-  body,
+  :global(body),
   :global(html) {
     height: 100%;
   }
