@@ -62,7 +62,7 @@ export function getDefaultHunter(): Hunter {
     id: "default-id",
     name: "John Doe",
     pic: "https://example.com/default-pic.png",
-    skill: 2,
+    skill: 6,
     location: { lat: 0, lon: 0 },
     speed: 5,
     draw_speed: 3,

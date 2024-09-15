@@ -49,17 +49,17 @@
   <ul id="identifiers" style="color:rgba(155, 74, 40, 0.877)">
     <li><strong>Condition</strong>{bounty.bounty_condition}</li>
     <li><strong>Danger Level:</strong>{bounty.danger}</li>
-    <li><strong>Location:</strong>{Loc2Str(bounty.last_known)}</li>
+    <li><strong>Last Seen:</strong>{Loc2Str(bounty.last_known)}</li>
     <li><strong>Styles:</strong>{bounty.styles}</li>
   </ul>
 
   <p>
-    {bounty.name} is a dangerous criminal wanted for being a {bounty.crime}.
-    {bounty.client} is offering {bounty.reward} HARD CASH for {bounty.name}, {bounty.bounty_condition}!
+    <strong>{bounty.name}</strong> is a dangerous criminal wanted for being a {bounty.crime}.
+    {bounty.client} is offering {bounty.reward} HARD CASH for <strong>{bounty.name}</strong>, {bounty.bounty_condition}!
     They prefer to see
-    {bounty.name} taken out using any of these methods: {bounty.styles}.
+    <strong>{bounty.name}</strong> taken out using any of these methods: {bounty.styles}.
     <br />
-    Be warned! {bounty.name} is known to have these skills!
+    Be warned! <strong>{bounty.name}</strong> is known to have these skills!
   </p>
   <dl>
     <dt>Speed</dt>
@@ -83,5 +83,7 @@
   }
   h4 {
     color: green;
+    font-size: 24pt;
+    margin: 0;
   }
 </style>

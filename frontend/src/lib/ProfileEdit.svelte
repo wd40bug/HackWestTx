@@ -12,6 +12,7 @@
 
 <div class="outer">
   <div class="form">
+    <h1>Edit Profile</h1>
     <label for="name">Name</label>
     <input type="text" id="name" bind:value={hunter.name} />
     <label for="skill">How skilled are you?</label>
@@ -25,7 +26,7 @@
       />
       <output>{hunter.skill}</output>
     </div>
-    <label for="location" />
+    <label for="location">Location</label>
     <fieldset>
       <label for="lat">latitude</label>
       <input
@@ -58,7 +59,7 @@
       id="discernment"
       bind:value={hunter.discernment}
     />
-    <label for="class" />
+    <label for="class">What kind of bounty hunter are you?</label>
     <select name="class" id="class" bind:value={hunter.type}>
       <option value="Gunslinger">Gunslinger</option>
       <option value="Cowboy">Cowboy</option>
@@ -76,24 +77,45 @@
     position: absolute;
     z-index: 100;
     background-color: white;
-    left: 50%;
-    top: 50%;
+    left: 70%;
+    top: 44%;
     margin-left: -40%;
     margin-top: -20%;
     padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
   }
   .form > * {
     display: block;
     padding: 2px;
+  }
+  .form > label {
+    margin-top: 10px;
+    font-weight: bold;
   }
   .location {
     width: 50px;
   }
   #submit {
     margin-top: 6px;
+    font-weight: bold;
+    background: #53190e;
+    color: white;
+    padding: 5px 15px 5px 15px;
+    border: 0px;
+    border-radius: 5px;
+  }
+
+  #skill {
+    accent-color: #53190e;
   }
 
   output {
     margin: 0;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 20pt;
   }
 </style>

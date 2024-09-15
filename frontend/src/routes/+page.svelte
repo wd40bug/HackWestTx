@@ -54,6 +54,7 @@
     console.log(h);
     hunter = h.detail.hunter;
     profile_settings = false;
+    refresh_bounties()
   }
 </script>
 
