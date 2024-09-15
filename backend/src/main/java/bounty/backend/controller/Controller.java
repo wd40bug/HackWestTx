@@ -7,7 +7,9 @@ import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.util.PropertySource.Comparator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +45,7 @@ public class Controller {
     return Optional.ofNullable(item);
   }
 
+  @CrossOrigin(origins = "http://localhost:8081")
   @GetMapping("/test")
   public String test() {
     return "Hello Frontend";
@@ -55,10 +58,17 @@ public class Controller {
   // repository.save(testBounty);
   // return null;
 
+  @PostMapping(value = "/dummy_string")
+  public void dummy_string(@RequestBody() String hunter) {
+    System.out.println(hunter);
+  }
 
-  @GetMapping("/dummy_data")
-  public List<Bounty> dummy_data(@RequestParam(name = "hunter") Hunter hunter) {
-    return repository.get_lt_danger(hunter.skill() * 10);
+  @RequestMapping(value = "/dummy_data", method = RequestMethod.POST)
+  public List<Bounty> dummy_data(@RequestBody() Hunter hunter) {
+    System.out.println(hunter);
+    var bounties = repository.get_lt_danger(hunter.skill() * 10);
+    System.out.println(bounties);
+    return bounties;
   }
 
   @GetMapping("/feed")
