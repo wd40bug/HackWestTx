@@ -1,0 +1,89 @@
+<script lang="ts">
+  import type { Hunter } from "$lib/types";
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
+
+  export let hunter: Hunter;
+
+  function use() {
+    dispatch("use", { hunter: hunter });
+  }
+</script>
+
+<div class="outer">
+  <div class="form">
+    <label for="name">Name</label>
+    <input type="text" id="name" bind:value={hunter.name} />
+    <label for="skill">How skilled are you?</label>
+    <div>
+      <input
+        type="range"
+        id="skill"
+        min="0"
+        max="9"
+        bind:value={hunter.skill}
+      />
+      <output>{hunter.skill}</output>
+    </div>
+    <label for="location" />
+    <fieldset>
+      <label for="lat">latitude</label>
+      <input
+        type="number"
+        id="lat"
+        class="location"
+        bind:value={hunter.location.lat}
+      />
+      <label for="lon">longitude</label>
+      <input
+        type="number"
+        id="lon"
+        class="location"
+        bind:value={hunter.location.lon}
+      />
+    </fieldset>
+    <label for="class" />
+    <select name="class" id="class" bind:value={hunter.type}>
+      <option value="Gunslinger">Gunslinger</option>
+      <option value="Cowboy">Cowboy</option>
+      <option value="Sniper">Sniper</option>
+      <option value="Trickster">Trickster</option>
+      <option value="Sherrif">Sheriff</option>
+    </select>
+    <input
+      type="submit"
+      name="submit"
+      id="submit"
+      value="use"
+      on:click={use}
+    />
+  </div>
+</div>
+
+<style>
+  .outer {
+    opacity: 0.9;
+    position: absolute;
+    z-index: 100;
+    background-color: white;
+    left: 50%;
+    top: 50%;
+    margin-left: -40%;
+    margin-top: -20%;
+    padding: 10px;
+  }
+  .form > * {
+    display: block;
+    padding: 2px;
+  }
+  .location {
+    width: 50px;
+  }
+  #submit {
+    margin-top: 6px;
+  }
+
+  output {
+    margin: 0;
+  }
+</style>

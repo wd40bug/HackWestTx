@@ -38,7 +38,7 @@
   <div class="info"><strong>Speed:</strong> {hunter.speed}</div>
   <div class="info"><strong>Draw Speed:</strong> {hunter.draw_speed}</div>
   <div class="info"><strong>Discernment:</strong> {hunter.discernment}</div>
-  <a href="/" class="back-button">Back</a>
+  <button class="change-button" on:click>Change</button>
 </div>
 
 <style>
@@ -75,7 +75,7 @@
     margin-left: 6px;
   }
 
-  .back-button {
+  .change-button {
     display: block;
     width: 100%;
     padding: 10px 0px 10px 0px;

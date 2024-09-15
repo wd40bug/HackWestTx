@@ -15,11 +15,11 @@ export type Bounty = {
 }
 
 export enum HunterClass {
-  Gunslinger,
-  Cowboy,
-  Sniper,
-  Trickster,
-  Sheriff
+  Gunslinger = "Gunslinger",
+  Cowboy = "Cowboy",
+  Sniper = "Sniper",
+  Trickster = "Trickster",
+  Sheriff = "Sheriff",
 }
 
 export enum Crime {

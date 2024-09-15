@@ -1,12 +1,14 @@
 <script lang="ts">
-  import type { Bounty } from "$lib/types";
+  import type { Bounty, Hunter } from "$lib/types";
   import { getDefaultHunter } from "$lib/types";
   import BountyShort from "$lib/BountyShort.svelte";
   import Profile from "$lib/Profile.svelte";
+  import ProfileEdit from "$lib/ProfileEdit.svelte";
   import { onMount } from "svelte";
   const boxes = 10;
-  const hunter = getDefaultHunter(); //TODO: hunter stuff
+  let hunter = getDefaultHunter(); //TODO: hunter stuff
   let bounties: Bounty[] = [];
+  let profile_settings: boolean = false;
   async function refresh_bounties() {
     let response = await fetch(
       "/api?" +
@@ -16,15 +18,29 @@
         }).toString(),
     ).then((res) => res.text());
     bounties = JSON.parse(response);
-    console.log(bounties)
+    console.log(bounties);
   }
   onMount(refresh_bounties);
+
+  function profile_edit() {
+    profile_settings = true;
+  }
+
+  // @ts-ignore
+  function finish_edit(h) {
+    console.log(h)
+    hunter = h.detail.hunter;
+    profile_settings = false;
+  }
 </script>
 
+{#if profile_settings}
+  <ProfileEdit {hunter} on:use={finish_edit}/>
+{/if}
 <div class="outer_page">
   <div class="page">
     <div class="profile">
-      <Profile {hunter} />
+      <Profile {hunter} on:click={profile_edit} />
     </div>
     <div class="feed">
       {#each bounties as bounty}
