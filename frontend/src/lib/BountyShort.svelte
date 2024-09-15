@@ -1,4 +1,5 @@
 <script lang="ts">
+  
   import type { Bounty } from "$lib/types";
   export let bounty: Bounty;
 
@@ -15,8 +16,18 @@
   </ul>
   
   <p>
-    {bounty.name} is a dangerous criminal wanted for {bounty.crime}. 
-    {bounty.client} is offering {bounty.reward} hard cash for {bounty.name}, {bounty.bounty_condition}! They prefer to see
+    {bounty.name} is a dangerous criminal wanted for being a {bounty.crime}. 
+    {bounty.client} is offering {bounty.reward} HARD CASH for {bounty.name}, {bounty.bounty_condition}! They prefer to see
     {bounty.name} taken out using any of these methods: {bounty.styles}.
-  </p>
+    <br/>
+    Be warned! {bounty.name} is known to have these skills!
+    <dl>
+      <dt>Speed</dt> 
+      <dd>- {bounty.speed}</dd> 
+      <dt>Draw-Speed</dt> 
+      <dd>- {bounty.draw_speed}</dd> 
+      <dt>Slipperiness</dt>
+      <dd>- {bounty.slipperiness}</dd> 
+    </dl> 
+  
 </article>
