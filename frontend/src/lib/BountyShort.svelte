@@ -55,8 +55,9 @@
 
   <p>
     <strong>{bounty.name}</strong> is a dangerous criminal wanted for being a {bounty.crime}.
-    {bounty.client} is offering {bounty.reward} HARD CASH for <strong>{bounty.name}</strong>, {bounty.bounty_condition}!
-    They prefer to see
+    {bounty.client} is offering {bounty.reward} HARD CASH for
+    <strong>{bounty.name}</strong>, {bounty.bounty_condition}! They prefer to
+    see
     <strong>{bounty.name}</strong> taken out using any of these methods: {bounty.styles}.
     <br />
     Be warned! <strong>{bounty.name}</strong> is known to have these skills!
@@ -77,9 +78,11 @@
     height: 25%;
   }
   article {
-    border: 2px solid black;
+    border: 4px solid black;
     padding: 6px;
     padding-right: 10px;
+    margin: 10px;
+    border-radius: 5px;
   }
   h4 {
     color: green;

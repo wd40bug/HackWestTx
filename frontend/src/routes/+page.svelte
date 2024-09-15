@@ -93,12 +93,12 @@
   .page {
     display: grid;
     grid-template-columns: 30% 70%;
-    gap: 10px;
+    gap: 15px;
   }
 
   .profile,
   .feed {
-    background-color: rgba(256, 256, 256, 0.6);
+    background-color: #D2B582;
     border-radius: 8px;
     padding: 17px;
     box-sizing: border-box;
@@ -113,19 +113,20 @@
   }
 
   .page {
-    min-height: 100%;
+    height: 100%;
     padding: 0;
   }
   .outer_page {
     background-image: linear-gradient(to bottom right, #eb7e55, #53190e);
     height: 100vh;
-    padding: 10px;
+    padding: 20px;
+    box-sizing: border-box;
   }
   :global(body) {
     margin: 0;
   }
   .feed {
     overflow: scroll;
-    height: 100vh;
   }
+
 </style>

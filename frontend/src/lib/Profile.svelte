@@ -43,9 +43,11 @@
 <style>
   .profile-card {
     width: 100%; /* Adjust width as needed */
-    border: 2px solid #000;
-    padding: 0;
+    border: 4px solid #000;
+    border-radius: 5px;
+    padding: 5px;
     font-family: Arial, sans-serif;
+    box-sizing: border-box;
   }
 
   .header {
@@ -83,6 +85,7 @@
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
+    border: 0px;
     margin-top: 20px;
   }
 

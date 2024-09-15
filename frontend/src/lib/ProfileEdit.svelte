@@ -73,11 +73,11 @@
 
 <style>
   .outer {
-    opacity: 0.9;
+    opacity: 1;
     position: absolute;
     z-index: 100;
-    background-color: white;
-    left: 70%;
+    background-color: rgba(256, 256, 256, 1);
+    left: 45%;
     top: 44%;
     margin-left: -40%;
     margin-top: -20%;
