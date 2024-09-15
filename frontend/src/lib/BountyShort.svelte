@@ -5,7 +5,18 @@
 </script>
 
 <article>
+  <img src="Stickman.png" alt="stickman criminal"/>
+  <h4><strong>$$ {bounty.reward} $$</strong></h4>
+  <ul id="identifiers" style="color:rgba(155, 74, 40, 0.877)"> 
+      <li><strong>Condition</strong>{bounty.bounty_condition}</li>
+      <li><strong>Danger Level:</strong>{bounty.danger}</li> 
+      <li><strong>Location:</strong>{bounty.location}</li>
+      <li><strong>Styles:</strong>{bounty.styles}</li>
+  </ul>
+  
   <p>
-    {bounty.name}
+    {bounty.name} is a dangerous criminal wanted for {bounty.crime}. 
+    {bounty.client} is offering {bounty.reward} hard cash for {bounty.name}, {bounty.bounty_condition}! They prefer to see
+    {bounty.name} taken out using any of these methods: {bounty.styles}.
   </p>
 </article>
