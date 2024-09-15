@@ -1,8 +1,10 @@
 <script lang="ts">
   import type { Bounty } from "$lib/types";
   import BountyShort from "$lib/BountyShort.svelte";
+  import Profile from "$lib/Profile.svelte";
   import { onMount } from "svelte";
   const boxes = 10;
+  const hunter = "";//TODO: hunter stuff
   let bounties: Bounty[] = [];
   function refresh_bounties() {
     let response = fetch("localhost:8080/test")
@@ -15,26 +17,27 @@
 
 <div class="page">
   <div class="profile">
-    <div class="pheader">
-      <img src="https://commons.wikimedia.org/wiki/File:Stickman.png" />
-      <h2 style="color:rgba(155, 74, 40, 0.877)">Hunter Guy</h2>
-    </div>
-    <body>
-      <ul id="identifiers" style="color:rgba(155, 74, 40, 0.877)">
-        <li><strong>Class:</strong> Cowboy</li>
-        <li><strong>Skill Level:</strong> 5</li>
-        <li><strong>Location:""</strong>[5,5]</li>
-      </ul>
-
-      <dl>
-        <dt>Speed</dt>
-        <dd>- 5</dd>
-        <dt>Draw-Speed</dt>
-        <dd>- 5</dd>
-        <dt>Discernment</dt>
-        <dd>- 5</dd>
-      </dl>
-    </body>
+    <Profile {hunter}/>
+    <!-- <div class="pheader"> -->
+    <!--   <img src="https://commons.wikimedia.org/wiki/File:Stickman.png" /> -->
+    <!--   <h2 style="color:rgba(155, 74, 40, 0.877)">Hunter Guy</h2> -->
+    <!-- </div> -->
+    <!-- <body> -->
+    <!--   <ul id="identifiers" style="color:rgba(155, 74, 40, 0.877)"> -->
+    <!--     <li><strong>Class:</strong> Cowboy</li> -->
+    <!--     <li><strong>Skill Level:</strong> 5</li> -->
+    <!--     <li><strong>Location:""</strong>[5,5]</li> -->
+    <!--   </ul> -->
+    <!---->
+    <!--   <dl> -->
+    <!--     <dt>Speed</dt> -->
+    <!--     <dd>- 5</dd> -->
+    <!--     <dt>Draw-Speed</dt> -->
+    <!--     <dd>- 5</dd> -->
+    <!--     <dt>Discernment</dt> -->
+    <!--     <dd>- 5</dd> -->
+    <!--   </dl> -->
+    <!-- </body> -->
   </div>
   <div class="feed">
     {#each bounties as bounty}
