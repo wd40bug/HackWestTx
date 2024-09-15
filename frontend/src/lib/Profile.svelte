@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Hunter } from "$lib/types";
+  import { Loc2Str } from "$lib/types";
   export let hunter: Hunter;
   import img from "$lib/assets/Stickman.png";
 </script>
@@ -10,7 +11,7 @@
     <img src={img} alt="" />
   </div>
   <div class="info"><strong>Skill:</strong> {hunter.skill}</div>
-  <div class="info"><strong>Location:</strong> {hunter.location}</div>
+  <div class="info"><strong>Location:</strong> {Loc2Str(hunter.location)}</div>
   <div class="info"><strong>Type:</strong> {hunter.type}</div>
   <div class="info"><strong>Speed:</strong> {hunter.speed}</div>
   <div class="info"><strong>Draw Speed:</strong> {hunter.draw_speed}</div>
