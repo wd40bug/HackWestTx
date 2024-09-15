@@ -12,7 +12,7 @@
       "/api?" +
         new URLSearchParams({
           hunter: JSON.stringify(hunter),
-          max: '10',
+          max: "10",
         }).toString(),
     ).then((res) => res.text());
     bounties = JSON.parse(response);
@@ -23,26 +23,6 @@
 <div class="page">
   <div class="profile">
     <Profile {hunter} />
-    <!-- <div class="pheader"> -->
-    <!--   <img src="https://commons.wikimedia.org/wiki/File:Stickman.png" /> -->
-    <!--   <h2 style="color:rgba(155, 74, 40, 0.877)">Hunter Guy</h2> -->
-    <!-- </div> -->
-    <!-- <body> -->
-    <!--   <ul id="identifiers" style="color:rgba(155, 74, 40, 0.877)"> -->
-    <!--     <li><strong>Class:</strong> Cowboy</li> -->
-    <!--     <li><strong>Skill Level:</strong> 5</li> -->
-    <!--     <li><strong>Location:""</strong>[5,5]</li> -->
-    <!--   </ul> -->
-    <!---->
-    <!--   <dl> -->
-    <!--     <dt>Speed</dt> -->
-    <!--     <dd>- 5</dd> -->
-    <!--     <dt>Draw-Speed</dt> -->
-    <!--     <dd>- 5</dd> -->
-    <!--     <dt>Discernment</dt> -->
-    <!--     <dd>- 5</dd> -->
-    <!--   </dl> -->
-    <!-- </body> -->
   </div>
   <div class="feed">
     {#each bounties as bounty}
@@ -66,9 +46,9 @@
   }
   .profile {
     background-color: rgba(190, 186, 177, 0.877);
-    padding: 6px;
+    padding: 0px 6px;
     display: inline-block;
-    min-height: 100%;
+    height: auto;
   }
   .pheader {
     text-align: center;
@@ -97,15 +77,20 @@
     /* rgba(190, 186, 177, 0.877) */
   }
   .page {
-    height: 100%; 
+    min-height: 100%;
     padding: 0;
   }
-  .page, :global(body) {
+  .page,
+  :global(body) {
     padding: 0;
     margin: 0;
   }
   :global(body),
   :global(html) {
     height: 100%;
+  }
+  .feed {
+    overflow: scroll;
+    height: 100vh;
   }
 </style>

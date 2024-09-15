@@ -31,3 +31,11 @@
     </dl> 
   
 </article>
+
+<style>
+article{
+  border: 2px solid black;
+  padding: 6px;
+  padding-right: 10px;
+}
+</style>
