@@ -15,7 +15,7 @@ public interface BountyRepository extends MongoRepository<Bounty, String> {
   @Query("{name: '?0'}")
   Bounty get_by_name(String name);
 
-  @Query("{'danger': {$lt: '?0'}}")
+  @Query("{'danger': {$lt: ?0}}")
   List<Bounty> get_lt_danger(int danger);
   public long count();
 

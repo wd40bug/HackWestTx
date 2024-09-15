@@ -1,139 +1,131 @@
-<div class="page">
-    
-  <div class="profile">
-      <div class="pheader">
-          <img src="Stickman.png" alt="a stickman"/>
-          <h2 style="color:rgba(155, 74, 40, 0.877)">Hunter Guy</h2>
-      </div>
-      <body>
-         
-          <ul id="identifiers", style="color:rgba(155, 74, 40, 0.877)">
-              <li><strong>Class:</strong> Cowboy</li>
-              <li><strong>Skill Level:</strong> 5</li>
-              <li><strong>Location: </strong>[5,5]</li>
-            </ul> 
-          
-          <dl>
-              <dt>Speed</dt>
-              <dd>- 5</dd>
-              <dt>Draw-Speed</dt>
-              <dd>- 5</dd>
-              <dt>Discernment</dt>
-              <dd>- 5</dd>
-            </dl> 
-      </body>
-  
-  </div>
-  <div class="feed">
-      <body>
-          <div class = "box">
-              <body>
-                  <img src="https://commons.wikimedia.org/wiki/File:Stickman.png"/>
-                  <h4>$$ MONEY $$</h4>
-                  <ul id="identifiers", style="color:rgba(155, 74, 40, 0.877)">
-                      <li><strong>Type:</strong> Dead</li>
-                      <li><strong>Danger Level:</strong> 5</li>
-                      <li><strong>Location:</strong>[5,5]</li>
-                    </ul> 
-              </body>
-         
-          </div>
-          <div class = "box">
-              <body>
-                  <img src="https://commons.wikimedia.org/wiki/File:Stickman.png"/>
-                  <h4>$$ MONEY $$</h4>
-                  <ul id="identifiers", style="color:rgba(155, 74, 40, 0.877)">
-                      <li><strong>Type:</strong> Dead</li>
-                      <li><strong>Danger Level:</strong> 5</li>
-                      <li><strong>Location:</strong>[5,5]</li>
-                    </ul> 
-              </body>
-         
-          </div>
-          <div class = "box">
-              <body>
-                  <img src="https://commons.wikimedia.org/wiki/File:Stickman.png"/>
-                  <h4>$$ MONEY $$</h4>
-                  <ul id="identifiers", style="color:rgba(155, 74, 40, 0.877)">
-                      <li><strong>Type:</strong> Dead</li>
-                      <li><strong>Danger Level:</strong> 5</li>
-                      <li><strong>Location:</strong>[5,5]</li>
-                    </ul> 
-              </body>
-         
-          </div>
-          <div class = "box">
-              <body>
-                  <img src="https://commons.wikimedia.org/wiki/File:Stickman.png"/>
-                  <h4>$$ MONEY $$</h4>
-                  <ul id="identifiers", style="color:rgba(155, 74, 40, 0.877)">
-                      <li><strong>Type:</strong> Dead</li>
-                      <li><strong>Danger Level:</strong> 5</li>
-                      <li><strong>Location:</strong>[5,5]</li>
-                    </ul> 
-              </body>
-         
-          </div>
-          
-         
-         
-      </body>
-      
-      
-  </div>
+<script lang="ts">
+  import type { Bounty, Hunter } from "$lib/types";
+  import { getDefaultHunter } from "$lib/types";
+  import BountyShort from "$lib/BountyShort.svelte";
+  import Profile from "$lib/Profile.svelte";
+  import ProfileEdit from "$lib/ProfileEdit.svelte";
+  import { onMount } from "svelte";
+  const boxes = 10;
+  let hunter = getDefaultHunter(); //TODO: hunter stuff
+  let bounties: Bounty[] = [];
+  let profile_settings: boolean = false;
+  let sortOption: string = "relevance"; // Default sorting option
+  async function refresh_bounties() {
+    let response = await fetch(
+      "/api?" +
+        new URLSearchParams({
+          hunter: JSON.stringify(hunter),
+          max: "10",
+        }).toString(),
+    ).then((res) => res.text());
+    bounties = JSON.parse(response);
+    console.log(bounties);
+  }
+  // Apply sorting after fetching the bounties
+  sortBounties();
 
- 
+  // Function to sort bounties based on the selected option
+  function sortBounties() {
+    if (sortOption === "reward") {
+      // Sort by reward in descending order
+      bounties = [...bounties].sort((a, b) => b.reward - a.reward);
+    } else if (sortOption === "name") {
+      // Sort by name alphabetically
+      bounties = [...bounties].sort((a, b) => a.name.localeCompare(b.name));
+    } else {
+      // Default sort by relevance (assumed to be the original order from API)
+      // If relevance needs specific sorting logic, add it here
+    }
+  }
+  // Update sorting when the option changes
+  function changeSort(option: string) {
+    sortOption = option;
+    sortBounties(); // Re-sort based on the new option
+  }
 
+  onMount(refresh_bounties);
+
+  function profile_edit() {
+    profile_settings = true;
+  }
+
+  // @ts-ignore
+  function finish_edit(h) {
+    console.log(h);
+    hunter = h.detail.hunter;
+    profile_settings = false;
+    refresh_bounties();
+  }
+</script>
+
+{#if profile_settings}
+  <ProfileEdit {hunter} on:use={finish_edit} />
+{/if}
+
+<div class="outer_page">
+  <div class="page">
+    <div class="profile">
+      <Profile {hunter} on:click={profile_edit} />
+    </div>
+    <div class="feed">
+      <label for="sort">Sort By: </label>
+      <select
+        id="sort"
+        bind:value={sortOption}
+        on:change={(e) => {
+          // @ts-ignore
+          changeSort(e.target.value);
+        }}
+      >
+        <option value="relevance">Relevance</option>
+        <option value="reward">Reward</option>
+        <option value="name">Name</option>
+      </select>
+      <button on:click={refresh_bounties}>Refresh</button>
+      {#each bounties as bounty}
+        <BountyShort {bounty} />
+      {/each}
+    </div>
+  </div>
 </div>
 
 <style>
-  
-  dd{margin-left: 10px;}
-  .page{
-      background-color: rgba(215, 184, 98, 0.877);
-      width: 100%;
+  .page {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    gap: 10px;
   }
-  h2 {
-      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+
+  .profile,
+  .feed {
+    background-color: rgba(256, 256, 256, 0.6);
+    border-radius: 8px;
+    padding: 17px;
+    box-sizing: border-box;
   }
-  .profile{
-      background-color: rgba(190, 186, 177, 0.877);
-      width: 20%;
-      padding: 6px;
-      display: inline-block;
-   
-      
+  .profile {
+    display: inline-block;
+    height: auto;
   }
-  .pheader{
-      
-      text-align: center;
-      margin-bottom: 5px;
-     
-      padding: 6px;
-      background-color: rgba(190, 186, 177, 0.877);
-      /* rgba(190, 186, 177, 0.877) */
-      
+
+  .feed {
+    display: inline-block;
   }
-  #identifiers{
-     text-align: left;
+
+  .page {
+    min-height: 100%;
+    padding: 0;
   }
-  .feed{
-      background-color: rgba(190, 186, 177, 0.877);
-      width: 75%;
-      display: inline-block;
-      padding: 6px;
-      float: right;
-      
+  .outer_page {
+    background-image: linear-gradient(to bottom right, #eb7e55, #53190e);
+    height: 100vh;
+    padding: 10px;
   }
-  .box{
-      
-      text-align: center;
-      display: inline-block;
-      margin-bottom: 5px;
-      width: 47%;
-      padding: 4.5px;
-      background-color: rgba(190, 186, 177, 0.877);
-      /* rgba(190, 186, 177, 0.877) */
-      
+  :global(body) {
+    margin: 0;
+  }
+  .feed {
+    overflow: scroll;
+    height: 100vh;
   }
 </style>
