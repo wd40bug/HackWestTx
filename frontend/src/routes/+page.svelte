@@ -9,6 +9,7 @@
   let hunter = getDefaultHunter(); //TODO: hunter stuff
   let bounties: Bounty[] = [];
   let profile_settings: boolean = false;
+  let sortOption: string = "relevance"; // Default sorting option
   async function refresh_bounties() {
     let response = await fetch(
       "/api?" +
@@ -20,6 +21,28 @@
     bounties = JSON.parse(response);
     console.log(bounties);
   }
+  // Apply sorting after fetching the bounties
+  sortBounties();
+
+  // Function to sort bounties based on the selected option
+  function sortBounties() {
+    if (sortOption === "reward") {
+      // Sort by reward in descending order
+      bounties = [...bounties].sort((a, b) => b.reward - a.reward);
+    } else if (sortOption === "name") {
+      // Sort by name alphabetically
+      bounties = [...bounties].sort((a, b) => a.name.localeCompare(b.name));
+    } else {
+      // Default sort by relevance (assumed to be the original order from API)
+      // If relevance needs specific sorting logic, add it here
+    }
+  }
+  // Update sorting when the option changes
+  function changeSort(option: string) {
+    sortOption = option;
+    sortBounties(); // Re-sort based on the new option
+  }
+
   onMount(refresh_bounties);
 
   function profile_edit() {
@@ -28,21 +51,33 @@
 
   // @ts-ignore
   function finish_edit(h) {
-    console.log(h)
+    console.log(h);
     hunter = h.detail.hunter;
     profile_settings = false;
   }
 </script>
 
 {#if profile_settings}
-  <ProfileEdit {hunter} on:use={finish_edit}/>
+  <ProfileEdit {hunter} on:use={finish_edit} />
 {/if}
+
 <div class="outer_page">
   <div class="page">
     <div class="profile">
       <Profile {hunter} on:click={profile_edit} />
     </div>
     <div class="feed">
+      <label for="sort">Sort By: </label>
+      <select
+        id="sort"
+        bind:value={sortOption}
+        
+        on:change={(e) => changeSort(e.target.value)}
+      >
+        <option value="relevance">Relevance</option>
+        <option value="reward">Reward</option>
+        <option value="name">Name</option>
+      </select>
       {#each bounties as bounty}
         <BountyShort {bounty} />
       {/each}
