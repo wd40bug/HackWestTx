@@ -59,6 +59,8 @@
       <option value="reward">Reward</option>
       <option value="name">Name</option>
     </select>
+  </div>
+</div>
 
     <!-- display bounties -->
     {#each bounties as bounty}
