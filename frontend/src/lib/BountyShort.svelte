@@ -9,7 +9,6 @@
   import bounty5 from "$lib/assets/bounty5.png";
   import bounty6 from "$lib/assets/bounty6.png";
 
-  console.log(bounty.pic);
   let pic = bounty.pic;
   function getBountyImage(pic: string) {
     switch (pic) {
@@ -35,7 +34,7 @@
   <img class="picture" src={getBountyImage(bounty.pic)} alt="criminal" />
   <h4><strong>$$ {bounty.reward},000 $$</strong></h4>
   <ul id="identifiers" style="color:rgba(155, 74, 40, 0.877)">
-    <li><strong>Condition</strong>{bounty.bounty_condition}</li>
+    <li><strong>Condition:</strong>{bounty.bounty_condition}</li>
     <li><strong>Danger Level:</strong>{bounty.danger}</li>
     <li><strong>Last Seen:</strong>{Loc2Str(bounty.last_known)}</li>
     <li><strong>Styles:</strong>{bounty.styles}</li>
@@ -43,7 +42,7 @@
 
   <p>
     <strong>{bounty.name}</strong> is a dangerous criminal wanted for being a {bounty.crime}.
-    {bounty.client} is offering {bounty.reward} HARD CASH for
+    {bounty.client} is offering ${bounty.reward},000 HARD CASH for
     <strong>{bounty.name}</strong>, {bounty.bounty_condition}!
     <strong>{bounty.name}</strong>
     is known to have the following styles:

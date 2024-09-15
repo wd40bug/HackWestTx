@@ -19,7 +19,6 @@
         }).toString(),
     ).then((res) => res.text());
     bounties = JSON.parse(response);
-    console.log(bounties);
   }
   // Apply sorting after fetching the bounties
   sortBounties();
@@ -32,6 +31,12 @@
     } else if (sortOption === "name") {
       // Sort by name alphabetically
       bounties = [...bounties].sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortOption === "distance") {
+      bounties = [...bounties].sort(
+        (a, b) =>
+          Math.pow(a.last_known.lat - b.last_known.lat, 2) +
+          Math.pow(a.last_known.lon - b.last_known.lon, 2),
+      );
     } else {
       // Default sort by relevance (assumed to be the original order from API)
       // If relevance needs specific sorting logic, add it here
@@ -51,7 +56,6 @@
 
   // @ts-ignore
   function finish_edit(h) {
-    console.log(h);
     hunter = h.detail.hunter;
     profile_settings = false;
     refresh_bounties();
@@ -80,6 +84,7 @@
         <option value="relevance">Relevance</option>
         <option value="reward">Reward</option>
         <option value="name">Name</option>
+        <option value="distance">Distance</option>
       </select>
       <button on:click={refresh_bounties}>Refresh</button>
       {#each bounties as bounty}
@@ -98,7 +103,7 @@
 
   .profile,
   .feed {
-    background-color: #D2B582;
+    background-color: #d2b582;
     border-radius: 8px;
     padding: 17px;
     box-sizing: border-box;
@@ -128,5 +133,4 @@
   .feed {
     overflow: scroll;
   }
-
 </style>
