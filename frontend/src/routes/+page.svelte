@@ -1,3 +1,18 @@
+<script lang="ts">
+  import type { Bounty } from "$lib/types";
+  import BountyShort from "$lib/BountyShort.svelte";
+  import { onMount } from "svelte";
+  const boxes = 10;
+  let bounties: Bounty[] = [];
+  function refresh_bounties() {
+    let response = fetch("localhost:8080/test")
+      .then((res) => res.json)
+      .then((json) => json);
+    console.log(response);
+  }
+  onMount(refresh_bounties);
+</script>
+
 <div class="page">
   <div class="profile">
     <div class="pheader">
@@ -22,48 +37,9 @@
     </body>
   </div>
   <div class="feed">
-    <body>
-      <div class="box">
-        <body>
-          <p>this is a box</p>
-        </body>
-      </div>
-      <div class="box">
-        <body>
-          <p>this is a box</p>
-        </body>
-      </div>
-      <div class="box">
-        <body>
-          <p>this is a box</p>
-        </body>
-      </div>
-      <div class="box">
-        <body>
-          <p>this is a box</p>
-        </body>
-      </div>
-      <div class="box">
-        <body>
-          <p>this is a box</p>
-        </body>
-      </div>
-      <div class="box">
-        <body>
-          <p>this is a box</p>
-        </body>
-      </div>
-      <div class="box">
-        <body>
-          <p>this is a box</p>
-        </body>
-      </div>
-      <div class="box">
-        <body>
-          <p>this is a box</p>
-        </body>
-      </div>
-    </body>
+    {#each bounties as bounty}
+      <BountyShort {bounty} />
+    {/each}
   </div>
 </div>
 
@@ -73,16 +49,18 @@
   }
   .page {
     background-color: rgba(215, 184, 98, 0.877);
-    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    gap: 10px;
   }
   h2 {
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   }
   .profile {
     background-color: rgba(190, 186, 177, 0.877);
-    width: 20%;
     padding: 6px;
     display: inline-block;
+    min-height: 100%;
   }
   .pheader {
     text-align: center;
@@ -97,10 +75,8 @@
   }
   .feed {
     background-color: rgba(190, 186, 177, 0.877);
-    width: 75%;
     display: inline-block;
     padding: 6px;
-    float: right;
   }
   .box {
     margin: left;
@@ -113,14 +89,15 @@
     /* rgba(190, 186, 177, 0.877) */
   }
   .page {
+    min-height: 100%;
+  }
+  .page,
+  body {
     padding: 0;
     margin: 0;
-    height: 100%;
   }
+  body,
   :global(html) {
     height: 100%;
-  }
-  body {
-    min-height: 100%;
   }
 </style>
